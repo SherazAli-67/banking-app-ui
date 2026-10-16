@@ -1,3 +1,5 @@
+import 'package:banking_app/constants/string_const.dart';
+import 'package:banking_app/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,11 +13,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Banking app',
+      title: StringConst.appTitle,
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: Scaffold(body: Center(child: Text("Banking app"),),)
+      home: HomeScreen()
     );
   }
 }
