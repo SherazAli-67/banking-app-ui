@@ -1,4 +1,5 @@
 import 'package:banking_app/constants/string_const.dart';
+import 'package:banking_app/core/app_colors.dart';
 import 'package:banking_app/routing/router.dart';
 import 'package:flutter/material.dart';
 
@@ -9,13 +10,14 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: StringConst.appTitle,
       theme: ThemeData(
-        brightness: .light
+        brightness: .light,
+        fontFamily: 'Manrope',
+        scaffoldBackgroundColor: AppColors.scaffoldBg,
       ),
       routerConfig: router,
       builder: (ctx, child) => child!,
