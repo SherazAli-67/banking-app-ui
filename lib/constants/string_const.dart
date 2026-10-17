@@ -4,6 +4,7 @@ class StringConst {
   static const welcomeToNeobank = 'Welcome to Neobank';
   static const yourBalance = 'Your balance';
   static const balanceAmount = '\$3,200.00';
+  static const hiddenBalance = '••••••••';
   static const addMoney = 'Add money';
   static const yourCards = 'Your cards';
   static const newCard = ' New card';
