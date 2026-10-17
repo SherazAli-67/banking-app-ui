@@ -1,5 +1,5 @@
 import 'package:banking_app/constants/string_const.dart';
-import 'package:banking_app/presentation/screens/home_screen.dart';
+import 'package:banking_app/routing/router.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,12 +12,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: StringConst.appTitle,
       theme: ThemeData(
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+        brightness: .light
       ),
-      home: HomeScreen()
+      routerConfig: router,
+      builder: (ctx, child) => child!,
     );
   }
 }
