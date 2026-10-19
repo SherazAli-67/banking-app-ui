@@ -57,13 +57,13 @@ class BankCardWidget extends StatelessWidget {
       width: width,
       height: height,
       decoration: BoxDecoration(
-        // color: card.isDark ? AppColors.darkCard : AppColors.primaryLime,
-        // borderRadius: .circular(radius),
+        color: card.isDark ? AppColors.darkCard : AppColors.primaryLime,
+        borderRadius: .circular(radius),
       ),
       clipBehavior: .hardEdge,
       child: Stack(
         children: [
-          // _buildWatermark(),
+          _buildWatermark(),
           Padding(
             padding: .all(compact ? 12 : 17),
             child: Column(
@@ -73,11 +73,11 @@ class BankCardWidget extends StatelessWidget {
                   mainAxisAlignment: .spaceBetween,
                   crossAxisAlignment: .start,
                   children: [
-                    // if (compact)
-                    //   _buildSelectionIndicator()
-                    // else
-                    //   Text(StringConst.brandMark, style: card.isDark ? AppTextStyles.cardBrandLight : AppTextStyles.cardBrand,),
-                    // _buildNetworkBadge(),
+                    if (compact)
+                      _buildSelectionIndicator()
+                    else
+                      Text(StringConst.brandMark, style: card.isDark ? AppTextStyles.cardBrandLight : AppTextStyles.cardBrand,),
+                    _buildNetworkBadge(),
                   ],
                 ),
                 const Spacer(),
@@ -90,11 +90,13 @@ class BankCardWidget extends StatelessWidget {
                         crossAxisAlignment: .start,
                         children: [
                           //card.typeLabel, cardTypeLabelStyle,
+                          Text(card.typeLabel, style: cardTypeLabelStyle,),
+                          Text(card.lastFour, style: cardLast4DigitsStyle,)
                           //card.lastFour, cardLast4DigitsStyle
                         ],
                       ),
                     ),
-                    // if (showDetails && !compact) _buildDetailsChip(),
+                    if (showDetails && !compact) _buildDetailsChip(),
                   ],
                 ),
               ],
