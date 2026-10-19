@@ -1,6 +1,7 @@
 class StringConst {
   static const appTitle = 'Banking App';
-  static const goodMorningTerry = 'Good morning, Terry';
+  static const appFontFamily = 'Manrope';
+  static const goodMorningSheraz = 'Good morning, Sheraz';
   static const welcomeToNeobank = 'Welcome to Neobank';
   static const yourBalance = 'Your balance';
   static const balanceAmount = '\$3,200.00';

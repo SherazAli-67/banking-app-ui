@@ -46,17 +46,24 @@ class BankCardWidget extends StatelessWidget {
     final width = compact ? NumberConstant.selectCardSize : NumberConstant.bankCardWidth;
     final height = compact ? NumberConstant.selectCardSize : NumberConstant.bankCardHeight;
     final radius = compact ? NumberConstant.compactCardRadius : NumberConstant.cardRadius;
+    final cardTypeLabelStyle =  compact
+        ? (card.isDark ? AppTextStyles.cardTypeCompactLight : AppTextStyles.cardTypeCompact)
+        : (card.isDark ? AppTextStyles.cardTypeLight : AppTextStyles.cardType);
+
+    final cardLast4DigitsStyle = compact
+        ? (card.isDark ? AppTextStyles.cardNumberCompactLight : AppTextStyles.cardNumberCompact)
+        : (card.isDark ? AppTextStyles.cardNumberLight : AppTextStyles.cardNumber);
     return Container(
       width: width,
       height: height,
       decoration: BoxDecoration(
-        color: card.isDark ? AppColors.darkCard : AppColors.primaryLime,
-        borderRadius: .circular(radius),
+        // color: card.isDark ? AppColors.darkCard : AppColors.primaryLime,
+        // borderRadius: .circular(radius),
       ),
       clipBehavior: .hardEdge,
       child: Stack(
         children: [
-          _buildWatermark(),
+          // _buildWatermark(),
           Padding(
             padding: .all(compact ? 12 : 17),
             child: Column(
@@ -66,8 +73,11 @@ class BankCardWidget extends StatelessWidget {
                   mainAxisAlignment: .spaceBetween,
                   crossAxisAlignment: .start,
                   children: [
-                    if (compact) _buildSelectionIndicator() else Text(StringConst.brandMark, style: card.isDark ? AppTextStyles.cardBrandLight : AppTextStyles.cardBrand,),
-                    _buildNetworkBadge(),
+                    // if (compact)
+                    //   _buildSelectionIndicator()
+                    // else
+                    //   Text(StringConst.brandMark, style: card.isDark ? AppTextStyles.cardBrandLight : AppTextStyles.cardBrand,),
+                    // _buildNetworkBadge(),
                   ],
                 ),
                 const Spacer(),
@@ -79,16 +89,12 @@ class BankCardWidget extends StatelessWidget {
                         spacing: 0,
                         crossAxisAlignment: .start,
                         children: [
-                          Text(card.typeLabel, style: compact
-                              ? (card.isDark ? AppTextStyles.cardTypeCompactLight : AppTextStyles.cardTypeCompact)
-                              : (card.isDark ? AppTextStyles.cardTypeLight : AppTextStyles.cardType),),
-                          Text(card.lastFour, style: compact
-                              ? (card.isDark ? AppTextStyles.cardNumberCompactLight : AppTextStyles.cardNumberCompact)
-                              : (card.isDark ? AppTextStyles.cardNumberLight : AppTextStyles.cardNumber),),
+                          //card.typeLabel, cardTypeLabelStyle,
+                          //card.lastFour, cardLast4DigitsStyle
                         ],
                       ),
                     ),
-                    if (showDetails && !compact) _buildDetailsChip(),
+                    // if (showDetails && !compact) _buildDetailsChip(),
                   ],
                 ),
               ],

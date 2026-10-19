@@ -49,8 +49,8 @@ class HomeScreen extends StatelessWidget {
         Column(
           crossAxisAlignment: .start,
           children: [
-            Text(StringConst.goodMorningTerry, style: AppTextStyles.greeting,),
-            Text(StringConst.welcomeToNeobank, style: AppTextStyles.subtitle,),
+            //goodMorningSheraz, greeting,
+            //welcomeToNeoBank, subtitle
           ],
         ),
         Stack(
@@ -58,19 +58,20 @@ class HomeScreen extends StatelessWidget {
           children: [
             Container(
               decoration: BoxDecoration(
-                color: AppColors.surfaceGray,
-                borderRadius: .circular(NumberConstant.actionButtonRadius),
-                border: .all(color: AppColors.borderSoft, width: 0.6),
+                // color: AppColors.surfaceGray,
+                // borderRadius: .circular(NumberConstant.actionButtonRadius),
+                // border: .all(color: AppColors.borderSoft, width: 0.6),
               ),
               padding: .all(12.5),
-              child: SvgPicture.asset(AssetRes.icNotification,),
+              //icNotification
+              child: const SizedBox()
             ),
             Positioned(
               right: 10,
               top: 10,
               child: Container(
-                padding: .all(3.5),
-                decoration: BoxDecoration(color: AppColors.primaryLime, borderRadius: .circular(3.5),),
+                // padding: .all(3.5),
+                // decoration: BoxDecoration(color: AppColors.primaryLime, borderRadius: .circular(3.5),),
               ),
             ),
           ],
@@ -83,21 +84,25 @@ class HomeScreen extends StatelessWidget {
     final isBalanceVisible = context.watch<HomeProvider>().isBalanceVisible;
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(color: AppColors.white, borderRadius: .circular(NumberConstant.sectionRadius),),
+      decoration: BoxDecoration(
+        // color: AppColors.white,
+        // borderRadius: .circular(NumberConstant.sectionRadius),
+      ),
       padding: .all(20),
       child: Column(
         crossAxisAlignment: .start,
         children: [
-          Text(StringConst.yourBalance, style: AppTextStyles.balanceLabel,),
+          //yourBalance, balanceLabel
           Padding(
             padding: .only(top: 3),
             child: Row(
               mainAxisAlignment: .spaceBetween,
               children: [
-                Text(isBalanceVisible ? AppData.balanceAmount : StringConst.hiddenBalance, style: AppTextStyles.balanceAmount,),
+                //isBalanceVisible ? AppData.balanceAmount : StringConst.hiddenBalance, balanceAmount
                 GestureDetector(
                   onTap: () => context.read<HomeProvider>().toggleBalanceVisibility(),
-                  child: SvgPicture.asset(AssetRes.icHiddenEye,),
+                  //icHiddenEye
+                  child: const SizedBox()
                 ),
               ],
             ),
@@ -109,9 +114,10 @@ class HomeScreen extends StatelessWidget {
               child: Container(
                 width: double.infinity,
                 alignment: .center,
-                decoration: BoxDecoration(color: AppColors.ctaBlack, borderRadius: .circular(NumberConstant.ctaRadius),),
+                // decoration: BoxDecoration(color: AppColors.ctaBlack, borderRadius: .circular(NumberConstant.ctaRadius),),
                 padding: .symmetric(vertical: 12),
-                child: Text(StringConst.addMoney, style: AppTextStyles.ctaButton,),
+                //addMoney, ctaBtn
+                child: const SizedBox()
               ),
             ),
           ),
@@ -124,14 +130,14 @@ class HomeScreen extends StatelessWidget {
     return Row(
       mainAxisAlignment: .spaceBetween,
       children: [
-        Text(StringConst.yourCards, style: AppTextStyles.sectionTitle,),
+        //yourCards, sectionTitle
         GestureDetector(
           onTap: () {},
           child: Text.rich(
             TextSpan(
               children: [
-                TextSpan(text: StringConst.newCardPlus, style: AppTextStyles.newCardPlus,),
-                TextSpan(text: StringConst.newCard, style: AppTextStyles.newCardLabel,),
+                //newCardPlus, newCardPlus,
+                //newCard, newCardLabel
               ],
             ),
           ),
@@ -155,7 +161,7 @@ class HomeScreen extends StatelessWidget {
   Widget _buildTransactionsSection() {
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(color: AppColors.white, borderRadius: .circular(NumberConstant.sectionRadius),),
+      // decoration: BoxDecoration(color: AppColors.white, borderRadius: .circular(NumberConstant.sectionRadius),),
       padding: .fromLTRB(20, 16, 20, 16),
       child: Column(
         spacing: 16,
@@ -163,8 +169,9 @@ class HomeScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: .spaceBetween,
             children: [
-              Text(StringConst.transactions, style: AppTextStyles.sectionTitle,),
-              GestureDetector(onTap: () {}, child: Text(StringConst.seeAll, style: AppTextStyles.seeAll,),),
+              //transactions, sectionTitle
+              //seeAll, seeAll
+              GestureDetector(onTap: () {}, child: const SizedBox()),
             ],
           ),
           ...AppData.transactions.map(_buildTransactionRow),
@@ -178,12 +185,13 @@ class HomeScreen extends StatelessWidget {
       children: [
         Container(
           decoration: BoxDecoration(
-            color: transaction.iconColor,
-            borderRadius: .circular(12),
-            border: .all(color: AppColors.transactionIconBorder, width: 5.5),
+            // color: transaction.iconColor,
+            // borderRadius: .circular(12),
+            // border: .all(color: AppColors.transactionIconBorder, width: 5.5),
           ),
           padding: .symmetric(horizontal: 8, vertical: 4),
-          child: Text(transaction.iconSymbol, style: const TextStyle(color: AppColors.white, fontSize: 16, height: 24 / 16,),),
+          //iconSymbol, fontSize: 16, colorWhite,height: 24 / 16,
+          child: const SizedBox(),
         ),
         Expanded(
           child: Padding(
@@ -191,22 +199,28 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: .start,
               children: [
-                Text(transaction.merchant, style: AppTextStyles.transactionTitle,),
-                Padding(padding: .only(top: 3), child: Text(transaction.dateLabel, style: AppTextStyles.transactionDate,),),
-              ],
+                //transaction.merchant, transactionTitle,
+                //dateLabel, transactionDate,
+                Padding(
+                  padding: .only(top: 3),
+                  child: const SizedBox()
+                )],
             ),
           ),
         ),
         Column(
           crossAxisAlignment: .end,
           children: [
-            Text(transaction.amount, style: AppTextStyles.transactionAmount,),
+            //transaction.amount, transactionAmount
             Padding(
               padding: .only(top: 4),
               child: Container(
-                decoration: BoxDecoration(color: AppColors.primaryLime, borderRadius: .circular(NumberConstant.rewardBadgeRadius),),
+
+                // decoration: BoxDecoration(color: AppColors.primaryLime,
+                //   borderRadius: .circular(NumberConstant.rewardBadgeRadius),),
                 padding: .symmetric(horizontal: 8, vertical: 2),
-                child: Text(transaction.rewardBadge, style: AppTextStyles.rewardBadge,),
+                //rewardBadge, rewardBadge
+                child: const SizedBox()
               ),
             ),
           ],
