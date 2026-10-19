@@ -37,10 +37,10 @@ class StringConst {
   static const email = 'E-mail';
   static const phoneNumber = 'Phone number';
   static const homeAddress = 'Home address';
-  static const terryMelton = 'Terry Melton';
-  static const terryEmail = 'melton89@gmail.com';
-  static const terryPhone = '+1 201 555-0123';
-  static const terryAddress = '70 Rainey Street, Apartment 146, Austin TX 78701';
+  static const sherazAli = 'Sheraz Ali';
+  static const sherazEmail = 'soomrosheraz054@gmail.com';
+  static const sherazPhone = '+92 307 221-5500';
+  static const sherazAddress = '70 Rainey Street, Apartment 146, Austin TX 78701';
   static const accountInfo = 'Account info';
   static const accountType = 'Account type';
   static const personalAccount = 'Personal account';

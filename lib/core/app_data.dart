@@ -10,10 +10,10 @@ class AppData {
   static const balanceAmount = StringConst.balanceAmount;
 
   static const userProfile = UserProfileModel(
-    name: StringConst.terryMelton,
-    email: StringConst.terryEmail,
-    phone: StringConst.terryPhone,
-    address: StringConst.terryAddress,
+    name: StringConst.sherazAli,
+    email: StringConst.sherazEmail,
+    phone: StringConst.sherazPhone,
+    address: StringConst.sherazAddress,
     accountType: StringConst.personalAccount,
     avatar: AssetRes.profileAvatar,
   );
