@@ -1,3 +1,4 @@
+import 'package:banking_app/constants/animation_constant.dart';
 import 'package:banking_app/constants/number_constant.dart';
 import 'package:banking_app/constants/string_const.dart';
 import 'package:banking_app/core/app_colors.dart';
@@ -7,6 +8,8 @@ import 'package:banking_app/core/asset_res.dart';
 import 'package:banking_app/core/models/funding_method_model.dart';
 import 'package:banking_app/presentation/providers/add_money_provider.dart';
 import 'package:banking_app/presentation/widgets/bank_card_widget.dart';
+import 'package:banking_app/presentation/widgets/fade_slide_in.dart';
+import 'package:banking_app/presentation/widgets/scale_tap.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
@@ -27,11 +30,29 @@ class AddMoneyScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: .start,
               children: [
-                _buildHeader(context),
-                Padding(padding: .only(top: 27), child: Text(StringConst.selectCard, style: AppTextStyles.sectionTitle,),),
-                Padding(padding: .only(top: 17), child: _buildCardsList(context),),
-                Padding(padding: .only(top: 30), child: Text(StringConst.addMoneyToNeobank, style: AppTextStyles.sectionTitle,),),
-                Padding(padding: .only(top: 18), child: _buildFundingMethods(),),
+                FadeSlideIn(child: _buildHeader(context)),
+                FadeSlideIn(
+                  delay: AnimationConstant.staggerStep,
+                  child: Padding(
+                    padding: .only(top: 27),
+                    child: Text(StringConst.selectCard, style: AppTextStyles.sectionTitle,),
+                  ),
+                ),
+                FadeSlideIn(
+                  delay: AnimationConstant.staggerStep * 2,
+                  child: Padding(padding: .only(top: 17), child: _buildCardsList(context),),
+                ),
+                FadeSlideIn(
+                  delay: AnimationConstant.staggerStep * 3,
+                  child: Padding(
+                    padding: .only(top: 30),
+                    child: Text(StringConst.addMoneyToNeobank, style: AppTextStyles.sectionTitle,),
+                  ),
+                ),
+                Padding(
+                  padding: .only(top: 18),
+                  child: _buildFundingMethods(),
+                ),
               ],
             ),
           ),
@@ -46,7 +67,7 @@ class AddMoneyScreen extends StatelessWidget {
       children: [
         Align(
           alignment: .centerLeft,
-          child: GestureDetector(
+          child: ScaleTap(
             onTap: () => context.pop(),
             child: Container(
               decoration: BoxDecoration(
@@ -84,12 +105,17 @@ class AddMoneyScreen extends StatelessWidget {
   Widget _buildFundingMethods() {
     return Column(
       spacing: 12,
-      children: AppData.fundingMethods.map(_buildFundingMethodRow).toList(),
+      children: AppData.fundingMethods.asMap().entries.map((entry) {
+        return FadeSlideIn(
+          delay: AnimationConstant.staggerStep * (4 + entry.key),
+          child: _buildFundingMethodRow(entry.value),
+        );
+      }).toList(),
     );
   }
 
   Widget _buildFundingMethodRow(FundingMethodModel method) {
-    return GestureDetector(
+    return ScaleTap(
       onTap: () {},
       child: Container(
         width: double.infinity,

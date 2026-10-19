@@ -1,3 +1,4 @@
+import 'package:banking_app/constants/animation_constant.dart';
 import 'package:banking_app/presentation/providers/add_money_provider.dart';
 import 'package:banking_app/presentation/providers/home_provider.dart';
 import 'package:banking_app/presentation/screens/add_money_screen.dart';
@@ -53,8 +54,30 @@ GoRouter router = GoRouter(
     GoRoute(
       parentNavigatorKey: rootNavigatorKey,
       path: NamedRoutes.addMoney.routeName,
-      builder: (ctx, state) => ChangeNotifierProvider(create: (_) => AddMoneyProvider(), child: const AddMoneyScreen(),),
+      pageBuilder: (ctx, state) => CustomTransitionPage(
+        key: state.pageKey,
+        transitionDuration: AnimationConstant.entrance,
+        reverseTransitionDuration: AnimationConstant.interaction,
+        child: ChangeNotifierProvider(
+          create: (_) => AddMoneyProvider(),
+          child: const AddMoneyScreen(),
+        ),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          final curved = CurvedAnimation(parent: animation, curve: Curves.easeOutCubic);
+          return FadeTransition(
+            opacity: curved,
+            child: SlideTransition(
+              position: Tween<Offset>(
+                begin: const Offset(0, 0.04),
+                end: Offset.zero,
+              ).animate(curved),
+              child: child,
+            ),
+          );
+        },
+      ),
     ),
+
   ],
 );
 

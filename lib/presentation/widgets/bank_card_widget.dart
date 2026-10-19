@@ -1,3 +1,4 @@
+import 'package:banking_app/constants/animation_constant.dart';
 import 'package:banking_app/constants/number_constant.dart';
 import 'package:banking_app/constants/string_const.dart';
 import 'package:banking_app/core/app_colors.dart';
@@ -31,11 +32,16 @@ class BankCardWidget extends StatelessWidget {
     if (!compact) return GestureDetector(onTap: onTap, child: cardFace,);
     return GestureDetector(
       onTap: onTap,
-      child: Container(
+      child: AnimatedContainer(
+        duration: AnimationConstant.interaction,
+        curve: Curves.easeOutCubic,
         padding: .all(NumberConstant.selectCardPadding),
         decoration: BoxDecoration(
           borderRadius: .circular(NumberConstant.selectCardOuterRadius),
-          border: isSelected ? .all(color: AppColors.selectionBorder, width: NumberConstant.selectCardBorderWidth) : null,
+          border: .all(
+            color: isSelected ? AppColors.selectionBorder : Colors.transparent,
+            width: NumberConstant.selectCardBorderWidth,
+          ),
         ),
         child: cardFace,
       ),
@@ -128,12 +134,22 @@ class BankCardWidget extends StatelessWidget {
   }
 
   Widget _buildSelectionIndicator() {
-    return Container(
-      padding: .all(8),
-      decoration: BoxDecoration(
-        color: isSelected ? AppColors.selectionBorder : AppColors.scaffoldBg,
-        shape: .circle,
-        border: .all(color: isSelected ? AppColors.selectionBorder : AppColors.borderSoft, width: 1.5),
+    return AnimatedScale(
+      scale: isSelected ? 1.08 : 1,
+      duration: AnimationConstant.interaction,
+      curve: Curves.easeOutCubic,
+      child: AnimatedContainer(
+        duration: AnimationConstant.interaction,
+        curve: Curves.easeOutCubic,
+        padding: .all(8),
+        decoration: BoxDecoration(
+          color: isSelected ? AppColors.selectionBorder : AppColors.scaffoldBg,
+          shape: .circle,
+          border: .all(
+            color: isSelected ? AppColors.selectionBorder : AppColors.borderSoft,
+            width: 1.5,
+          ),
+        ),
       ),
     );
   }
