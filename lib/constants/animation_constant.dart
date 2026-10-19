@@ -4,4 +4,5 @@ class AnimationConstant {
   static const Duration staggerStep = Duration(milliseconds: 70);
   static const double entranceOffset = 12.0;
   static const double pressedScale = 0.97;
+  static const double avatarBeginScale = 0.92;
 }

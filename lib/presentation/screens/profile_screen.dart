@@ -1,9 +1,12 @@
+import 'package:banking_app/constants/animation_constant.dart';
 import 'package:banking_app/constants/number_constant.dart';
 import 'package:banking_app/constants/string_const.dart';
 import 'package:banking_app/core/app_colors.dart';
 import 'package:banking_app/core/app_data.dart';
 import 'package:banking_app/core/app_textstyles.dart';
 import 'package:banking_app/core/asset_res.dart';
+import 'package:banking_app/presentation/widgets/fade_slide_in.dart';
+import 'package:banking_app/presentation/widgets/scale_tap.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -22,10 +25,22 @@ class ProfileScreen extends StatelessWidget {
             padding: .only(bottom: 16),
             child: Column(
               children: [
-                Text(StringConst.profile, style: AppTextStyles.screenTitle,),
-                Padding(padding: .only(top: 20), child: _buildAvatar(),),
-                Padding(padding: .only(top: 36), child: _buildPersonalInfoSection(),),
-                Padding(padding: .only(top: 18), child: _buildAccountInfoSection(),),
+                FadeSlideIn(
+                  child: Text(StringConst.profile, style: AppTextStyles.screenTitle,),
+                ),
+                FadeSlideIn(
+                  delay: AnimationConstant.staggerStep,
+                  beginScale: AnimationConstant.avatarBeginScale,
+                  child: Padding(padding: .only(top: 20), child: _buildAvatar(),),
+                ),
+                FadeSlideIn(
+                  delay: AnimationConstant.staggerStep * 2,
+                  child: Padding(padding: .only(top: 36), child: _buildPersonalInfoSection(),),
+                ),
+                FadeSlideIn(
+                  delay: AnimationConstant.staggerStep * 3,
+                  child: Padding(padding: .only(top: 18), child: _buildAccountInfoSection(),),
+                ),
               ],
             ),
           ),
@@ -53,7 +68,7 @@ class ProfileScreen extends StatelessWidget {
         Positioned(
           right: 0,
           bottom: 8,
-          child: GestureDetector(
+          child: ScaleTap(
             onTap: () {},
             child: Container(
               decoration: BoxDecoration(
@@ -84,7 +99,10 @@ class ProfileScreen extends StatelessWidget {
             mainAxisAlignment: .spaceBetween,
             children: [
               Text(StringConst.personalInfo, style: AppTextStyles.sectionTitle,),
-              GestureDetector(onTap: () {}, child: Text(StringConst.edit, style: AppTextStyles.actionLink,),),
+              ScaleTap(
+                onTap: () {},
+                child: Text(StringConst.edit, style: AppTextStyles.actionLink,),
+              ),
             ],
           ),
           Padding(
